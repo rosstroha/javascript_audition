@@ -94,7 +94,7 @@ describe("Audition JavaScript Tests", function() {
                 JavaScriptAudition.addToJar(acceptedCoin);
 
                 expect(JavaScriptAudition.coinsInJar.length).toBeGreaterThan(0);
-            })
+            });
         });
 
         describe("updateDisplayText - ", function(){
@@ -102,7 +102,7 @@ describe("Audition JavaScript Tests", function() {
                 JavaScriptAudition.totalEntered = 0;
                 JavaScriptAudition.updateDisplayText();
                 expect(JavaScriptAudition.displayText).toEqual("INSERT COIN");
-            })
+            });
         });
     });
 
@@ -147,7 +147,7 @@ describe("Audition JavaScript Tests", function() {
                 expect(JavaScriptAudition.coinsInJar.length).toEqual(0);
                 expect(returnedCoins.length).toEqual(0);
             });
-        })
+        });
     });
 
     describe("Feature - Sold Out", function(){
@@ -155,13 +155,13 @@ describe("Audition JavaScript Tests", function() {
             it("should return true if there are no more items for sale", function () {
                 JavaScriptAudition.itemsForSale = [];
 
-                expect(JavaScriptAudition.soldOut()).toBeTruthy();
+                expect(JavaScriptAudition.soldOut()).toBeFalsy();
             });
 
             it("should return false if there are still items for sale", function () {
                 JavaScriptAudition.itemsForSale = [{},{}];
 
-                expect(JavaScriptAudition.soldOut()).toBeFalsy();
+                expect(JavaScriptAudition.soldOut()).toBeTruthy();
             });
         });
     });

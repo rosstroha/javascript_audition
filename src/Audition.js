@@ -33,6 +33,8 @@ var JavaScriptAudition = {
 
     coinsInJar: [],
 
+    itemsForSale: [],
+
     itRuns: function() {
         return true;
     },
@@ -69,6 +71,10 @@ var JavaScriptAudition = {
         var coinsToReturn = this.coinsInJar.slice(0);
         this.coinsInJar = [];
         return coinsToReturn;
+    },
+
+    soldOut: function(){
+        return this.itemsForSale.length > 0;
     }
 
 };
