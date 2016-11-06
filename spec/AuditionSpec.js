@@ -4,7 +4,7 @@ describe("Audition JavaScript Tests", function() {
         expect(JavaScriptAudition.itRuns()).toBeTruthy();
     });
 
-    describe("Accept Coins", function(){
+    describe("Accept Coins - ", function(){
         describe("coinAccepted", function() {
             it("should return a coin if the coin's weight and size matches a dime", function(){
                 var validCoin = {
@@ -39,14 +39,14 @@ describe("Audition JavaScript Tests", function() {
             });
         });
 
-        describe("coinSlot", function(){
+        describe("coinSlot - ", function(){
             beforeEach(function(){
                 this.addToJarSpy = spyOn(JavaScriptAudition, "addToJar");
                 this.updateDisplayTextSpy = spyOn(JavaScriptAudition, "updateDisplayText");
             });
 
             it("should properly handle a VALID coin input by accepting the coin, incrementing the value and updating the display text", function(){
-                var acceptedCoinsSpy = spyOn(JavaScriptAudition, "acceptedCoins").and.returnValue(true);
+                var coinAcceptedSpy = spyOn(JavaScriptAudition, "coinAccepted").and.returnValue(true);
                 var validCoin = {
                     weight: 2.268,
                     diameter: 17.91,
@@ -55,14 +55,14 @@ describe("Audition JavaScript Tests", function() {
 
                 var result = JavaScriptAudition.coinSlot(validCoin);
 
-                expect(acceptedCoinsSpy).toHaveBeenCalled();
-                expect(this.updateDisplayTextSpy).toHaveBeenCalledWith("0.10");
+                expect(coinAcceptedSpy).toHaveBeenCalled();
+                expect(this.updateDisplayTextSpy).toHaveBeenCalled();
                 expect(this.addToJarSpy).toHaveBeenCalled();
-                expect(result).toBeUndefined();
+                expect(result).toBeNull();
             });
 
             it("should properly handle an INVALID coin input by rejecting the coin by returning it to the user", function(){
-                var acceptedCoinsSpy = spyOn(JavaScriptAudition, "acceptedCoins").and.returnValue(false);
+                var coinAcceptedSpy = spyOn(JavaScriptAudition, "coinAccepted").and.returnValue(false);
                 var invalidCoin = { //specs match that of a penny
                     weight: 2.5,
                     diameter: 19.05,
@@ -71,7 +71,7 @@ describe("Audition JavaScript Tests", function() {
 
                 var result = JavaScriptAudition.coinSlot(invalidCoin);
 
-                expect(acceptedCoinsSpy).toHaveBeenCalled();
+                expect(coinAcceptedSpy).toHaveBeenCalled();
                 expect(this.addToJarSpy).not.toHaveBeenCalled();
                 expect(this.updateDisplayTextSpy).not.toHaveBeenCalled();
                 expect(result).not.toBeUndefined();
@@ -81,7 +81,7 @@ describe("Audition JavaScript Tests", function() {
             });
         });
 
-        describe("addToJar", function(){
+        describe("addToJar - ", function(){
             it("should add an accepted coin to the 'jar' or where the machine keeps the money", function () {
                 var acceptedCoin = {
                     name: "dime",
@@ -93,7 +93,15 @@ describe("Audition JavaScript Tests", function() {
 
                 JavaScriptAudition.addToJar(acceptedCoin);
 
-                expect(JavaScriptAudition.acceptedCoins.length).toBeGreaterThan(0);
+                expect(JavaScriptAudition.coinsInJar.length).toBeGreaterThan(0);
+            })
+        });
+
+        describe("updateDisplayText - ", function(){
+            it("should display INSERT COIN if the totalEntered value is 0", function () {
+                JavaScriptAudition.totalEntered = 0;
+                JavaScriptAudition.updateDisplayText();
+                expect(JavaScriptAudition.displayText).toEqual("INSERT COIN");
             })
         });
     });
