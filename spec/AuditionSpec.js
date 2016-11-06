@@ -6,7 +6,7 @@ describe("Audition JavaScript Tests", function() {
 
     describe("Accept Coins", function(){
         describe("coinAccepted", function() {
-            it("should return true if the coin's weight and size matches a dime", function(){
+            xit("should return true if the coin's weight and size matches a dime", function(){
                 var coin = {
                     weight: 2.268,
                     diameter: 17.91,
@@ -21,7 +21,7 @@ describe("Audition JavaScript Tests", function() {
                     diameter: 19.05,
                     thickness: 1.5
                 };
-                expect(JavaScriptAudition.coinAccepted(coin)).toBeTruthy();
+                expect(JavaScriptAudition.coinAccepted(coin)).toBeFalsy();
             });
         });
     });

@@ -1,10 +1,39 @@
 "use strict";
 
 var JavaScriptAudition = {
-  itRuns: function() {
-    return true;
-  }
+    // Weight in grams
+    // thickness and diameter in millimeters
+    acceptedCoins : [
+        {
+            name: "quarter",
+            weight: 5.67,
+            diameter: 21.21,
+            thickness: 1.95
+        },
+        {
+            name: "dime",
+            weight: 2.268,
+            diameter: 17.91,
+            thickness: 1.35
+        },
+        {
+            name: "nickel",
+            weight: 5.67,
+            diameter: 21.21,
+            thickness: 1.95
+        }
+    ],
 
-  // Add your javascript here
+    itRuns: function() {
+        return true;
+    },
+
+    coinAccepted: function(inputCoin){
+        return this.acceptedCoins.some(function(acceptedCoin){
+            return acceptedCoin.weight === inputCoin.weight ||
+                acceptedCoin.diameter === inputCoin.diameter ||
+                acceptedCoin.thickness === inputCoin.thickness;
+        });
+    }
 
 };
