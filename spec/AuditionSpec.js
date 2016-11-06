@@ -16,7 +16,8 @@ describe("Audition JavaScript Tests", function() {
                     name: "dime",
                     weight: 2.268,
                     diameter: 17.91,
-                    thickness: 1.35
+                    thickness: 1.35,
+                    value: 0.10
                 };
 
                 var result = JavaScriptAudition.coinAccepted(validCoin);
@@ -25,6 +26,7 @@ describe("Audition JavaScript Tests", function() {
                 expect(result.weight).toEqual(expectedResult.weight);
                 expect(result.diameter).toEqual(expectedResult.diameter);
                 expect(result.thickness).toEqual(expectedResult.thickness);
+                expect(result.value).toEqual(expectedResult.value);
             });
 
             it("should return null if the coin's weight and size does not match a quarter, dime or nickel", function(){
@@ -77,7 +79,23 @@ describe("Audition JavaScript Tests", function() {
                 expect(result.diameter).toBe(19.05);
                 expect(result.thickness).toBe(1.5);
             });
-        })
+        });
+
+        describe("addToJar", function(){
+            it("should add an accepted coin to the 'jar' or where the machine keeps the money", function () {
+                var acceptedCoin = {
+                    name: "dime",
+                    weight: 2.268,
+                    diameter: 17.91,
+                    thickness: 1.35,
+                    value: 0.10
+                };
+
+                JavaScriptAudition.addToJar(acceptedCoin);
+
+                expect(JavaScriptAudition.acceptedCoins.length).toBeGreaterThan(0);
+            })
+        });
     });
 
 });
