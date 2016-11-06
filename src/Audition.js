@@ -26,6 +26,8 @@ var JavaScriptAudition = {
 
     displayText: "INSERT COIN",
 
+    totalEntered: 0,
+
     itRuns: function() {
         return true;
     },
@@ -36,6 +38,17 @@ var JavaScriptAudition = {
                 acceptedCoin.diameter === inputCoin.diameter &&
                 acceptedCoin.thickness === inputCoin.thickness;
         });
+    },
+
+    coinSlot: function (inputCoin) {
+        var coinAcceptedResult = this.coinAccepted(inputCoin);
+        if(coinAcceptedResult){
+            this.addToJar(coinAcceptedResult);
+            this.updateDisplayText();
+            return null;
+        } else {
+            return inputCoin;
+        }
     }
 
 };
