@@ -24,6 +24,8 @@ var JavaScriptAudition = {
         }
     ],
 
+    displayText: "INSERT COIN",
+
     itRuns: function() {
         return true;
     },
