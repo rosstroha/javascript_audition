@@ -76,5 +76,4 @@ var JavaScriptAudition = {
     soldOut: function(){
         return this.itemsForSale.length > 0;
     }
-
 };
