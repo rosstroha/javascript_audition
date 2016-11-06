@@ -106,4 +106,48 @@ describe("Audition JavaScript Tests", function() {
         });
     });
 
+    describe("Feature - Return Coins", function(){
+        describe("coinReturn", function(){
+            it("should return all coins that have been accepted", function(){
+                JavaScriptAudition.coinsInJar = [
+                    {
+                        name: "dime",
+                        weight: 2.268,
+                        diameter: 17.91,
+                        thickness: 1.35,
+                        value: 0.10
+                    },
+                    {
+                        name: "dime",
+                        weight: 2.268,
+                        diameter: 17.91,
+                        thickness: 1.35,
+                        value: 0.10
+                    },
+                    {
+                        name: "dime",
+                        weight: 2.268,
+                        diameter: 17.91,
+                        thickness: 1.35,
+                        value: 0.10
+                    }
+                ];
+
+                var returnedCoins = JavaScriptAudition.returnCoins();
+
+                expect(JavaScriptAudition.coinsInJar.length).toEqual(0);
+                expect(returnedCoins.length).toEqual(3);
+            });
+
+            it("should return nothing if nothing has been accepted", function(){
+                JavaScriptAudition.coinsInJar = [];
+
+                var returnedCoins = JavaScriptAudition.returnCoins();
+
+                expect(JavaScriptAudition.coinsInJar.length).toEqual(0);
+                expect(returnedCoins.length).toEqual(0);
+            });
+        })
+    })
+
 });
