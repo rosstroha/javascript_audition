@@ -36,6 +36,16 @@ describe("Audition JavaScript Tests", function() {
                 expect(JavaScriptAudition.coinAccepted(coin)).toBeUndefined();
             });
         });
+
+        describe("coinSlot", function(){
+            it("should properly handle a VALID coin input by accepting the coin, incrementing the value and updating the display text", function(){
+
+            });
+
+            it("should properly handle an INVALID coin input by accepting the coin, incrementing the value and updating the display text", function(){
+
+            });
+        })
     });
 
 });
