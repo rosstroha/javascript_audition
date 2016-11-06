@@ -63,6 +63,12 @@ var JavaScriptAudition = {
 
     updateDisplayText: function () {
         this.displayText = this.totalEntered ? this.totalEntered : "INSERT COIN";
+    },
+
+    returnCoins: function(){
+        var coinsToReturn = this.coinsInJar.slice(0);
+        this.coinsInJar = [];
+        return coinsToReturn;
     }
 
 };
