@@ -148,6 +148,22 @@ describe("Audition JavaScript Tests", function() {
                 expect(returnedCoins.length).toEqual(0);
             });
         })
-    })
+    });
+
+    describe("Feature - Sold Out", function(){
+        describe("soldOut", function(){
+            it("should return true if there are no more items for sale", function () {
+                JavaScriptAudition.itemsForSale = [];
+
+                expect(JavaScriptAudition.soldOut()).toBeTruthy();
+            });
+
+            it("should return false if there are still items for sale", function () {
+                JavaScriptAudition.itemsForSale = [{},{}];
+
+                expect(JavaScriptAudition.soldOut()).toBeFalsy();
+            });
+        });
+    });
 
 });
