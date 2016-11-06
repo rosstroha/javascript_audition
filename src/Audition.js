@@ -29,9 +29,9 @@ var JavaScriptAudition = {
     },
 
     coinAccepted: function(inputCoin){
-        return this.acceptedCoins.some(function(acceptedCoin){
-            return acceptedCoin.weight === inputCoin.weight ||
-                acceptedCoin.diameter === inputCoin.diameter ||
+        return this.acceptedCoins.find(function(acceptedCoin){
+            return acceptedCoin.weight === inputCoin.weight &&
+                acceptedCoin.diameter === inputCoin.diameter &&
                 acceptedCoin.thickness === inputCoin.thickness;
         });
     }
